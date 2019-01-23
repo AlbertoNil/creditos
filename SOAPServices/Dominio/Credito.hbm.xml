@@ -1,0 +1,13 @@
+﻿<?xml version="1.0" encoding="utf-8" ?> 
+<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2"
+                   assembly="SOAPServices"
+                   namespace="SOAPServices.Dominio"
+                   default-lazy="false">
+  <class name="Credito" table="t_credito">
+    <id name="CodCredito" column="credito"><generator class="assigned" /></id>
+    <property name="CodAlumno" column="alumno" />
+    <property name="CodCurso" column="curso" />
+    <property name="CodDescripcion" column="decripcion" />
+    <property name="Tipo" column="tipo" />
+  </class>
+</hibernate-mapping>
