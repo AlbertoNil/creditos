@@ -7,12 +7,11 @@ using System.Web;
 namespace SOAPServices.Dominio
 {
     [DataContract]
-
-    public class Item
+    public class TipoPreguntaError
     {
         [DataMember]
-        public int CodigoAlumno { get; set; }
+        public string CodigoError { get; set; }
         [DataMember]
-        public decimal Cantidad { get; set; }
+        public string MensajeError { get; set; }
     }
 }

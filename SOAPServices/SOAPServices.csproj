@@ -78,20 +78,19 @@
     </Compile>
     <Compile Include="Dominio\Contador.cs" />
     <Compile Include="Dominio\Credito.cs" />
-    <Compile Include="Dominio\Item.cs" />
     <Compile Include="Dominio\PreguntaExistenteError.cs" />
+    <Compile Include="Dominio\TipoPreguntaError.cs" />
     <Compile Include="ICreditoService.cs" />
-    <Compile Include="Persistencia\BaseDAO.cs" />
-    <Compile Include="Persistencia\ConexionUtil.cs" />
     <Compile Include="Persistencia\ContadorDAO.cs" />
     <Compile Include="Persistencia\CreditoDAO.cs" />
-    <Compile Include="Persistencia\NHibernateHelper.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Properties\PublishProfiles\CreditosService - FTP.pubxml" />
+    <None Include="Properties\PublishProfiles\CreditosService - Web Deploy.pubxml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

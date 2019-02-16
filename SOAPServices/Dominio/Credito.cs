@@ -20,7 +20,5 @@ namespace SOAPServices.Dominio
         public string Tipo { get; set; }
         [DataMember]
         public DateTime FechaIng { get; set; }
-        //[DataMember]
-        //public IList<CreditoContador> Contador { get; set; }
     }
 }

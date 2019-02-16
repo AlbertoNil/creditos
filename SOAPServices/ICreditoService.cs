@@ -15,37 +15,11 @@ namespace SOAPServices
 
         [OperationContract]
         Credito CrearCredito(Credito creditoACrear);
-      /*
+   
         [OperationContract]
-        Credito ObtenerCredito(int codcredito);
-        [OperationContract]
-        Credito ObtenerPregunta(string coddescripcion);
-        */
-        [OperationContract]
-        void EliminarCredito(int dni);
+        void EliminarCredito(int CodCredito);
+
         [OperationContract]
         List<Credito> ListarCreditos();
-
-
-
-
-        /*
-        [OperationContract]
-        [FaultContract(typeof(PreguntaExistenteError))]
-
-        Credito CrearCredito(Credito creditoACrear);
-        
-         [OperationContract]
-        ICollection<Credito> ListarCreditos();
-         */
-
-        /*
-        [OperationContract]
-        void EliminarCredito(int codcredito);
-        [OperationContract]
-        List<Credito> ListarCreditos();
-        */
-
-
     }
 }

@@ -19,17 +19,35 @@ namespace SOAPServices
 
         public Credito CrearCredito(Credito creditoACrear)
         {
-            if (creditoDAO.ObtenerPregunta(creditoACrear.CodDescripcion) != null) // si ya existe
-            {
+            //if (creditoDAO.ObtenerPregunta(creditoACrear.CodDescripcion) != null) // si ya existe
+            Credito varpreg = creditoDAO.ObtenerPregunta(creditoACrear.CodDescripcion);
+            if (varpreg != null) // si ya existe
+                {
                 throw new FaultException<PreguntaExistenteError>(
                     new PreguntaExistenteError()
                     {
                         CodigoError = "101",
-                        MensajeError = "La Pregunta con codigo " + creditoACrear.CodDescripcion + " ya existe."
-                    }
-                //new FaultReason("Error al intentar creación")
+                        MensajeError = "La Pregunta con codigo " + varpreg.CodDescripcion + " ya existe."
+                    },
+                new FaultReason("Error al intentar creación")
                 );
             }
+            string xTipo = creditoACrear.Tipo;
+            if (xTipo.Trim() != "P") // si ya existe
+            {
+                if (xTipo.Trim() != "R")
+                {
+                    throw new FaultException<TipoPreguntaError>(
+                        new TipoPreguntaError()
+                        {
+                            CodigoError = "102",
+                            MensajeError = "El tipo de pregunta ingresado " + creditoACrear.Tipo + ", no Es valido. Favor de Ingresar P si es pregunta y R si es respuesta."
+                        },
+                    new FaultReason("Error al insertar tipo pregunta")
+                    );
+                }
+            }
+
             return creditoDAO.Crear(creditoACrear);
         }
 
@@ -55,52 +73,7 @@ namespace SOAPServices
             return creditoDAO.ObtenerPregunta(coddescripcion);
         }
 
-
-
-        /*
-        //private ClienteDAO clienteDAO = new ClienteDAO();
-        //private ProductoDAO productoDAO = new ProductoDAO();
-        //private FacturaDAO creditoDAO = new FacturaDAO();
-        //private FacturaDetalleDAO facturaDetalleDAO = new FacturaDetalleDAO();
-
-        private CreditoDAO creditoDAO = new CreditoDAO();
-
-        public Credito CrearCredito(Credito creditoACrear)
-        {
-            //ICollection<Credito> creditopregunta = creditoDAO.ObtenerPregunta(creditoACrear.CodDescripcion);
-            //if (creditopregunta != null) // // si ya existe
-            if (creditoDAO.ObtenerPregunta(creditoACrear.CodDescripcion) != null) // si ya existe
-            { 
-                throw new FaultException<PreguntaExistenteError>(
-                    new PreguntaExistenteError()
-                    {
-                        CodigoError = 10,
-                        MensajeError = "La Pregunta con codigo " + creditoACrear.CodDescripcion + " ya existe."
-                    },
-                new FaultReason("Error al intentar creación"));
-            }
-            Credito credito = new Credito()
-            {
-                CodAlumno = creditoACrear.CodAlumno,
-                CodCurso = creditoACrear.CodCurso,
-                CodDescripcion = creditoACrear.CodDescripcion,
-                Tipo = creditoACrear.Tipo,
-                FechaIng = DateTime.Now
-            };
-            credito = creditoDAO.Crear(credito);
-            return creditoDAO.Crear(creditoACrear);
-        }
         
-        public ICollection<Credito> ListarCreditos()
-        {
-            return creditoDAO.ListarTodos();
-        }
-        */
-
-        /*public void EliminarCredito(int codcredito)
-        {
-            creditoDAO.Eliminar(codcredito);
-        }*/
 
         /*****************************************************************/
     }

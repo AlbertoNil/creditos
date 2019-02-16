@@ -20,7 +20,6 @@ namespace SOAPServices.Persistencia
             string SqlInsContador = "insert into contador values (@codalumno, @contador)";
             string SqlUpdContador = "update contador set contador=contador+@contador where codalumno=@codalumno";
 
-            //creditoCreado = Obtener(creditoACrear.CodCredito);
             Contador contadorAlumno = contadorDAO.ObtenerAlumno(creditoACrear.CodAlumno);
             if (contadorAlumno == null) // si ya existe
             { 
@@ -42,8 +41,6 @@ namespace SOAPServices.Persistencia
                         InsContador.Parameters.Add(new SqlParameter("@contador", 1));
                         InsContador.ExecuteNonQuery();
                     }
-                
-                    //
                 }
             } else
             {
@@ -65,8 +62,6 @@ namespace SOAPServices.Persistencia
                         UpdContador.Parameters.Add(new SqlParameter("@contador", 1));
                         UpdContador.ExecuteNonQuery();
                     }
-
-                    //SqlCommand UpdContador = new SqlCommand(SqlUpdContador, conexion);
                 }
             }
 
@@ -95,6 +90,7 @@ namespace SOAPServices.Persistencia
                                 CodCurso = (string)resultado["codcurso"],
                                 CodDescripcion = (string)resultado["coddescripcion"],
                                 Tipo = (string)resultado["tipo"],
+                                FechaIng = (DateTime)resultado["fechaing"],
                             };
                         }
                     }
@@ -131,18 +127,28 @@ namespace SOAPServices.Persistencia
             }
             return preguntaEncontrada;
         }
-
         public void Eliminar(int codcredito)
         {
             string sql = "delete from creditos where codcredito=@codcredito";
+            string SqlUpdContador = "update contador set contador=contador-@contador where codalumno=@codalumno";
+
+            Credito creditoUbicado = null;
+            creditoUbicado = Obtener(codcredito);
+            string codalumno = creditoUbicado.CodAlumno;
+
             using (SqlConnection conexion = new SqlConnection(cadenaconexion))
             {
                 conexion.Open();
-                using (SqlCommand comando =
- new SqlCommand(sql, conexion))
+                using (SqlCommand comando = new SqlCommand(sql, conexion))
                 {
                     comando.Parameters.Add(new SqlParameter("@codcredito", codcredito));
                     comando.ExecuteNonQuery();
+                }
+                using (SqlCommand UpdContador = new SqlCommand(SqlUpdContador, conexion))
+                {
+                    UpdContador.Parameters.Add(new SqlParameter("@codalumno", codalumno));
+                    UpdContador.Parameters.Add(new SqlParameter("@contador", 1));
+                    UpdContador.ExecuteNonQuery();
                 }
             }
         }
@@ -167,7 +173,8 @@ namespace SOAPServices.Persistencia
                                 CodAlumno = (string)resultado["codalumno"],
                                 CodCurso = (string)resultado["codcurso"],
                                 CodDescripcion = (string)resultado["coddescripcion"],
-                                Tipo = (string)resultado["tipo"]
+                                Tipo = (string)resultado["tipo"],
+                                FechaIng = (DateTime)resultado["fechaing"]
                             };
                             creditosEncontrados.Add(creditosEncontrado);
                         }

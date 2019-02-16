@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="5c4edce6-09ea-46e6-a467-c5c585a12a71" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+  <ClientOptions>
+    <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
+    <GenerateTaskBasedAsynchronousMethod>true</GenerateTaskBasedAsynchronousMethod>
+    <EnableDataBinding>true</EnableDataBinding>
+    <ExcludedTypes />
+    <ImportXmlTypes>false</ImportXmlTypes>
+    <GenerateInternalTypes>false</GenerateInternalTypes>
+    <GenerateMessageContracts>false</GenerateMessageContracts>
+    <NamespaceMappings />
+    <CollectionMappings />
+    <GenerateSerializableTypes>true</GenerateSerializableTypes>
+    <Serializer>Auto</Serializer>
+    <UseSerializerForFaults>true</UseSerializerForFaults>
+    <ReferenceAllAssemblies>true</ReferenceAllAssemblies>
+    <ReferencedAssemblies />
+    <ReferencedDataContractTypes />
+    <ServiceContractMappings />
+  </ClientOptions>
+  <MetadataSources>
+    <MetadataSource Address="http://localhost:52349/CreditoService.svc" Protocol="http" SourceId="1" />
+  </MetadataSources>
+  <Metadata>
+    <MetadataFile FileName="CreditoService.xsd" MetadataType="Schema" ID="249dbf80-6382-4d50-ae59-9a0b42d8b8cd" SourceId="1" SourceUrl="http://localhost:52349/CreditoService.svc?xsd=xsd1" />
+    <MetadataFile FileName="CreditoService.disco" MetadataType="Disco" ID="b583a925-0e77-49b8-92ca-54bb4f791e5a" SourceId="1" SourceUrl="http://localhost:52349/CreditoService.svc?disco" />
+    <MetadataFile FileName="CreditoService1.xsd" MetadataType="Schema" ID="82925500-9c35-4d42-be0a-59eb92566856" SourceId="1" SourceUrl="http://localhost:52349/CreditoService.svc?xsd=xsd2" />
+    <MetadataFile FileName="CreditoService2.xsd" MetadataType="Schema" ID="47cf4f9d-e9a0-4806-b723-fbad7c1d53f3" SourceId="1" SourceUrl="http://localhost:52349/CreditoService.svc?xsd=xsd0" />
+    <MetadataFile FileName="CreditoService.wsdl" MetadataType="Wsdl" ID="f8598259-6b71-467e-8981-f7224700907c" SourceId="1" SourceUrl="http://localhost:52349/CreditoService.svc?wsdl" />
+  </Metadata>
+  <Extensions>
+    <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />
+    <ExtensionFile FileName="configuration.svcinfo" Name="configuration.svcinfo" />
+  </Extensions>
+</ReferenceGroup>
